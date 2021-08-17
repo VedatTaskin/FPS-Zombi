@@ -313,11 +313,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351099451}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &361081485 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4750393040104936057, guid: 9def150ec0e78744ca92a0db8f56e9de, type: 3}
-  m_PrefabInstance: {fileID: 4750393040449108212}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &676424363
 GameObject:
   m_ObjectHideFlags: 0
@@ -555,6 +550,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -620,13 +616,25 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 361081485}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2f10a02ebb26f64d817064b05fdfa6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1612175788
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,7 +1024,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4750393040104936057, guid: 9def150ec0e78744ca92a0db8f56e9de, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4750393040104936057, guid: 9def150ec0e78744ca92a0db8f56e9de, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1061,6 +1069,10 @@ PrefabInstance:
     - target: {fileID: 4750393040104936060, guid: 9def150ec0e78744ca92a0db8f56e9de, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4750393040104936061, guid: 9def150ec0e78744ca92a0db8f56e9de, type: 3}
+      propertyPath: mouseSensitivity
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9def150ec0e78744ca92a0db8f56e9de, type: 3}
