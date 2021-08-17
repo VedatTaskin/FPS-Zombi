@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     [Header("Mouse Control Options")]
     [SerializeField] float mouseSensitivity = 1f;
     [SerializeField] float maxViewAngle = 60f;
+    [SerializeField] bool invertX;
+    [SerializeField] bool invertY;
 
 
     private CharacterController characterController;
@@ -127,7 +129,22 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 MouseInput()
     {
-        return new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"))*mouseSensitivity;
+        return new Vector2(invertX ? -Input.GetAxisRaw("Mouse X") : Input.GetAxisRaw("Mouse X"),
+            invertY ? -Input.GetAxisRaw("Mouse Y") : Input.GetAxisRaw("Mouse Y"));
+
+        #region if Input Version
+        //Vector2 mouseInput= new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        //if (invertX)
+        //{
+        //    mouseInput.x = -mouseInput.x;
+        //}
+        //if (invertY)
+        //{
+        //    mouseInput.y = -mouseInput.y;
+        //}
+        //return mouseInput * mouseSensitivity;
+        #endregion
+
     }
 
 }
