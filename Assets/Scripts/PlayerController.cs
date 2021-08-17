@@ -51,9 +51,8 @@ public class PlayerController : MonoBehaviour
     private void Rotate()
     {
         transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y + MouseInput().x, transform.eulerAngles.z);
-        mainCameraTransform.rotation = Quaternion.Euler(mainCameraTransform.rotation.eulerAngles + new Vector3(MouseInput().y, 0f, 0f));
-
-        print(mainCameraTransform.eulerAngles.x);
+        
+                
 
         if (mainCameraTransform.eulerAngles.x>maxViewAngle && mainCameraTransform.eulerAngles.x<180f)
         {
@@ -64,6 +63,11 @@ public class PlayerController : MonoBehaviour
         else if (mainCameraTransform.eulerAngles.x>180f&&mainCameraTransform.eulerAngles.x<360f-maxViewAngle)
         {
             mainCameraTransform.rotation = Quaternion.Euler(360f - maxViewAngle, mainCameraTransform.eulerAngles.y, mainCameraTransform.eulerAngles.z);
+        }
+
+        else
+        {
+            mainCameraTransform.rotation = Quaternion.Euler(mainCameraTransform.rotation.eulerAngles + new Vector3(-MouseInput().y, 0f, 0f));
         }
     
     

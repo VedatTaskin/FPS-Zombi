@@ -9,7 +9,8 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         target = GameObject.FindWithTag("CameraPoint").transform;
-        
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
