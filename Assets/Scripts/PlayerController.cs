@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float runSpeed = 12f;
     [SerializeField] private float gravityModifier = 0.95f;
     [SerializeField] private float jumpPower = 0.25f;
+    [SerializeField] private InputAction newMovementInput;
 
     [Header("Mouse Control Options")]
     [SerializeField] float mouseSensitivity = 1f;
@@ -41,6 +43,15 @@ public class PlayerController : MonoBehaviour
         mainCameraTransform = GameObject.FindWithTag("CameraPoint").transform;
     }
 
+    private void OnEnable()
+    {
+        newMovementInput.Enable();
+    }
+
+    private void OnDisable()
+    {
+        newMovementInput.Disable();
+    }
 
 
     void Update()
@@ -108,15 +119,20 @@ public class PlayerController : MonoBehaviour
 
     private void KeyboardInput()
     {
-        verticalInput = Input.GetAxisRaw("Vertical");
-        horizontalInput = Input.GetAxisRaw("Horizontal");
+        //new input system
+        horizontalInput = newMovementInput.ReadValue<Vector2>().x;
+        verticalInput = newMovementInput.ReadValue<Vector2>().y;
 
-        if (Input.GetKeyDown(KeyCode.Space)&&characterController.isGrounded)
+        #region old input system
+        //verticalInput = Input.GetAxisRaw("Vertical");
+        //horizontalInput = Input.GetAxisRaw("Horizontal");
+        #endregion
+        if (Keyboard.current.spaceKey.wasPressedThisFrame && characterController.isGrounded)
         {
             jump = true;
         }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Keyboard.current.leftShiftKey.isPressed)
         {
             currentSpeed = runSpeed;
         }
@@ -129,8 +145,8 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 MouseInput()
     {
-        return new Vector2(invertX ? -Input.GetAxisRaw("Mouse X") : Input.GetAxisRaw("Mouse X"),
-            invertY ? -Input.GetAxisRaw("Mouse Y") : Input.GetAxisRaw("Mouse Y"));
+        return new Vector2(invertX ? -Mouse.current.delta.x.ReadValue() : Mouse.current.delta.x.ReadValue(),
+            invertY ? -Mouse.current.delta.y.ReadValue() : Mouse.current.delta.y.ReadValue());
 
         #region if Input Version
         //Vector2 mouseInput= new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));

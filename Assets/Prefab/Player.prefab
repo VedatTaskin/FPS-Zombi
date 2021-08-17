@@ -146,3 +146,57 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkSpeed: 8
   runSpeed: 12
+  gravityModifier: 0.95
+  jumpPower: 0.25
+  newMovementInput:
+    m_Name: New Movement Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ebfa421c-e506-4af6-b18f-1da26e64fb4f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: WASD
+      m_Id: 709f0fe0-25af-4c9a-8e63-941b95d854e1
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: New Movement Input
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 334087c8-7682-4888-a4ba-bb788ea29317
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: New Movement Input
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 29e95e2d-087c-42f5-b5cf-aaefe5f079f7
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: New Movement Input
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 8916d00e-2f8c-410c-8e2f-eb4e9c7875ae
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: New Movement Input
+      m_Flags: 8
+    - m_Name: right
+      m_Id: b45ec8b4-d378-4bbe-a24c-587a048a5a85
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: New Movement Input
+      m_Flags: 8
+  mouseSensitivity: 2.5
+  maxViewAngle: 60
+  invertX: 0
+  invertY: 0
