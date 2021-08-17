@@ -9,6 +9,9 @@ public class PlayerController : MonoBehaviour
     [Header("Player Control Settings")]
     [SerializeField] private float walkSpeed = 8f;
     [SerializeField] private float runSpeed = 12f;
+    [SerializeField] private float gravityModifier = 0.95f;
+    [SerializeField] private float jumpPower = 0.25f;
+
     [Header("Mouse Control Options")]
     [SerializeField] float mouseSensitivity = 1f;
     [SerializeField] float maxViewAngle = 60f;
@@ -19,6 +22,10 @@ public class PlayerController : MonoBehaviour
     private float currentSpeed = 8f;
     private float horizontalInput;
     private float verticalInput;
+
+    private Vector3 heightMovement;
+
+    private bool jump = false;
 
     private Transform mainCameraTransform;
 
@@ -75,13 +82,26 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        if (jump)
+        {
+            heightMovement.y = jumpPower;
+            jump = false;
+        }
+
+        heightMovement.y -= gravityModifier * Time.deltaTime;
+
         Vector3 localVerticalVector = transform.forward * verticalInput;
         Vector3 localHorizontalVector = transform.right * horizontalInput;
 
         Vector3 movementVector = localHorizontalVector + localVerticalVector;
         movementVector.Normalize();
         movementVector *= currentSpeed * Time.deltaTime;
-        characterController.Move(movementVector);
+        characterController.Move(movementVector+heightMovement);
+
+        if (characterController.isGrounded)
+        {
+            heightMovement.y = 0;
+        }
     }
 
     private void KeyboardInput()
@@ -89,6 +109,10 @@ public class PlayerController : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
         horizontalInput = Input.GetAxisRaw("Horizontal");
 
+        if (Input.GetKeyDown(KeyCode.Space)&&characterController.isGrounded)
+        {
+            jump = true;
+        }
 
         if (Input.GetKey(KeyCode.LeftShift))
         {
