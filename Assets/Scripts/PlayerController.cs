@@ -33,9 +33,14 @@ public class PlayerController : MonoBehaviour
 
     private Transform mainCameraTransform;
 
+    private Animator anim;
+
+
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
+
         if (Camera.main.GetComponent<CharacterController>()==null)
         {
             Camera.main.gameObject.AddComponent<CameraController>();
@@ -57,6 +62,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         KeyboardInput();
+
+        AnimationChanger();
     }
 
 
@@ -116,6 +123,33 @@ public class PlayerController : MonoBehaviour
             heightMovement.y = 0;
         }
     }
+
+
+    private void AnimationChanger()
+    {
+        if (newMovementInput.ReadValue<Vector2>().magnitude>0f && characterController.isGrounded)
+        {
+            
+            if (currentSpeed == walkSpeed)
+            {
+                anim.SetBool("Walk", true);
+                anim.SetBool("Run", false);
+            }
+            else if (currentSpeed == runSpeed)
+            {
+                anim.SetBool("Run", true);
+                anim.SetBool("Walk", false);
+            }
+
+        }
+        else
+        {
+            anim.SetBool("Walk", false);
+            anim.SetBool("Run", false);
+        }
+        
+    }
+
 
     private void KeyboardInput()
     {
