@@ -1,0 +1,6 @@
+-Zombie
+https://assetstore.unity.com/packages/3d/characters/creatures/polygon-zombie-pack-81953
+-Weapons
+https://assetstore.unity.com/packages/3d/props/weapons/polygonal-modern-weapons-asset-package-53808
+-Animations
+https://assetstore.unity.com/packages/3d/animations/zombie-animation-pack-free-150219

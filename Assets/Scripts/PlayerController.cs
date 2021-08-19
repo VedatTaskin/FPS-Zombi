@@ -34,12 +34,14 @@ public class PlayerController : MonoBehaviour
     private Transform mainCameraTransform;
 
     private Animator anim;
+    private AudioSource audioSource;
 
 
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
 
         if (Camera.main.GetComponent<CharacterController>()==null)
         {
@@ -175,6 +177,11 @@ public class PlayerController : MonoBehaviour
         {
             currentSpeed = walkSpeed;
         }
+    }
+
+    private void PlayFootstepSound()
+    {
+        audioSource.Play();
     }
 
     public Vector2 MouseInput()
