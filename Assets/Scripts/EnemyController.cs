@@ -20,7 +20,8 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private State currentState = State.Idle;
     [SerializeField] float attackRange = 2f;
-    [SerializeField] float chaseRange = 5f;
+    [SerializeField] float chaseRange = 7f;
+    [SerializeField] float turnSpeed = 15f;
 
     private void Awake()
     {
@@ -67,6 +68,7 @@ public class EnemyController : MonoBehaviour
                 break;
             case State.Chase:
                 print("Chase");
+                Chase();
                 break;
             case State.Attack:
                 print("Attack");
@@ -74,4 +76,32 @@ public class EnemyController : MonoBehaviour
         }
 
     }
+
+    void Chase()
+    {
+        if (player == null)
+        {
+            return;
+        }
+        agent.isStopped = false;      
+        agent.SetDestination(player.position);
+
+    }
+
+    void Attack()
+    {
+        if (player==null)
+        {
+            return;
+        }
+        agent.isStopped = true;
+        LookTheTarget(player.position);
+    }
+
+    void LookTheTarget(Vector3 target)
+    {
+        Vector3 lookPos = new Vector3(target.x, transform.position.y, target.z);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookPos - transform.position), turnSpeed*Time.deltaTime);
+    }
+
 }
