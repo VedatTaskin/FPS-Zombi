@@ -20,12 +20,16 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool invertX;
     [SerializeField] bool invertY;
 
+    [Header("Sound Settings")]
+    [SerializeField] List<AudioClip> footStepSounds = new List<AudioClip>();
+
 
     private CharacterController characterController;
 
     private float currentSpeed = 8f;
     private float horizontalInput;
     private float verticalInput;
+    private int lastindex = -1;
 
     private Vector3 heightMovement;
 
@@ -179,10 +183,33 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     private void PlayFootstepSound()
     {
-        audioSource.Play();
+        
+        if (footStepSounds.Count >0 && audioSource!=null)
+        {
+            int index;
+
+            do
+            {
+                index = UnityEngine.Random.Range(0, footStepSounds.Count);
+
+                if (lastindex!=index)
+                {
+                    if (!audioSource.isPlaying)
+                    {
+                        audioSource.PlayOneShot(footStepSounds[index]);
+                        lastindex = index;
+                        break;
+                    }
+                }
+            } 
+            while (index==lastindex);
+        }
     }
+
+
 
     public Vector2 MouseInput()
     {
