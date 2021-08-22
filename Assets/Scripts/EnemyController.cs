@@ -93,7 +93,7 @@ public class EnemyController : MonoBehaviour
         switch (currentState)
         {
             case State.Idle:
-                print("Idle");
+                //print("Idle");
                 break;
             case State.Search:
 
@@ -107,14 +107,14 @@ public class EnemyController : MonoBehaviour
                     Invoke("Search", patrolWaitTime);
                     isSearching = true;
                 }
-                print("Search");
+                //print("Search");
                 break;
             case State.Chase:
-                print("Chase");
+                //print("Chase");
                 Chase();
                 break;
             case State.Attack:
-                print("Attack");
+                //print("Attack");
                 break;
         }
 
