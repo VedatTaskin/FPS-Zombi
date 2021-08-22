@@ -33,7 +33,7 @@ public class AttackController : MonoBehaviour
             return;
         }
 
-        currentWeapon.SpawnNewWeapon(mainCameraTransform.GetChild(0).GetChild(0));
+        currentWeapon.SpawnNewWeapon(mainCameraTransform.GetChild(0).GetChild(0),anim);
     }
 
     void Attack()
