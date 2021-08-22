@@ -11,6 +11,8 @@ public class AttackController : MonoBehaviour
 
     private Animator anim;
 
+    private bool isAttacking;
+
     void Awake()
     {
         mainCameraTransform = GameObject.FindWithTag("CameraPoint").transform;
@@ -36,9 +38,19 @@ public class AttackController : MonoBehaviour
 
     void Attack()
     {
-        if (Mouse.current.leftButton.isPressed)
+        if (Mouse.current.leftButton.isPressed && !isAttacking)
         {
-            anim.SetTrigger("Attack");
+            StartCoroutine(AttackRoutine());
         }
+    }
+
+    private IEnumerator AttackRoutine()
+    {
+        anim.SetTrigger("Attack");
+        isAttacking = true;
+
+        //Weapon ýn attack rate'ine göre bekleme süresi ayarlanýr;
+        yield return new WaitForSeconds(currentWeapon.GetAttackRate);
+        isAttacking = false;
     }
 }
