@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 2074001410439336875}
   - component: {fileID: 8024407171917755605}
   - component: {fileID: 1836698422480675828}
-  - component: {fileID: 7743137801165357289}
   - component: {fileID: 1272755778500526220}
+  - component: {fileID: 7743137801165357289}
+  - component: {fileID: 7712375297273402354}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -98,18 +99,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7743137801165357289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6536000057867872281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ffe686508f863d47bd108213abb5213, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!195 &1272755778500526220
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -132,3 +121,36 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &7743137801165357289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536000057867872281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ffe686508f863d47bd108213abb5213, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
+  attackRange: 2
+  chaseRange: 7
+  turnSpeed: 15
+  patrolRadius: 7
+  patrolWaitTime: 2
+  chaseSpeed: 4
+  searchSpeed: 3
+--- !u!114 &7712375297273402354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536000057867872281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f6db5cc398f5c49895fe3111af8fe3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
