@@ -6,17 +6,22 @@ public class AttackController : MonoBehaviour
 {
     [SerializeField] Weapon currentWeapon;
 
-    // Start is called before the first frame update
-    void Start()
+    private Transform mainCameraTransform;
+
+    void Awake()
     {
-        print("Damage " + currentWeapon.GetDamage);
-        print("Attack Rate " + currentWeapon.GetAttackRate);
+        mainCameraTransform = GameObject.FindWithTag("CameraPoint").transform;
+        SpawnWeapon();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-      
 
+    void SpawnWeapon()
+    {
+        if (currentWeapon==null)
+        {
+            return;
+        }
+
+        currentWeapon.SpawnNewWeapon(mainCameraTransform.GetChild(0).GetChild(0));
     }
 }
