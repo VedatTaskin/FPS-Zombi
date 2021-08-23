@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] float patrolWaitTime = 2f;
     [SerializeField] float chaseSpeed = 4f;
     [SerializeField] float searchSpeed = 3f;
+    [SerializeField] int damage = 2;
 
     private bool isSearching = false;
 
@@ -164,6 +165,12 @@ public class EnemyController : MonoBehaviour
         NavMeshHit hit;
         NavMesh.SamplePosition(randomDirection, out hit, patrolRadius, 1);
         return hit.position;
+    }
+
+
+    public int GetDamage()
+    {
+        return damage;
     }
 
 }

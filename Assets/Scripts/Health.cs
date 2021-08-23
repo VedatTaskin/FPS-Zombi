@@ -14,12 +14,12 @@ public class Health : MonoBehaviour
         currentHealth = maxHealth;        
     }
 
-    void GiveDamage(int amount)
+    public void GiveDamage(int amount)
     {
         currentHealth -= amount;
     }
 
-    void AddHealth(int amount)
+    public void AddHealth(int amount)
     {
         currentHealth += amount;
     }

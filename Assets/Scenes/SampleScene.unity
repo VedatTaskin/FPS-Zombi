@@ -1139,6 +1139,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7712375297273402354, guid: 70e1d5a393ecc4b48baa38a7d5075bd5, type: 3}
+      propertyPath: maxHealth
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 7743137801165357289, guid: 70e1d5a393ecc4b48baa38a7d5075bd5, type: 3}
       propertyPath: chaseRange
       value: 7
