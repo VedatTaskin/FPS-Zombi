@@ -313,6 +313,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 351099451}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &403578571 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4750393040104936060, guid: 9def150ec0e78744ca92a0db8f56e9de, type: 3}
+  m_PrefabInstance: {fileID: 4750393040449108212}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &403578572
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403578571}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &676424363
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,14 +1099,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1272755778500526220, guid: 70e1d5a393ecc4b48baa38a7d5075bd5, type: 3}
-      propertyPath: m_Acceleration
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1272755778500526220, guid: 70e1d5a393ecc4b48baa38a7d5075bd5, type: 3}
-      propertyPath: m_AngularSpeed
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 1272755778500526220, guid: 70e1d5a393ecc4b48baa38a7d5075bd5, type: 3}
       propertyPath: m_StoppingDistance
       value: 0.2
       objectReference: {fileID: 0}
@@ -1141,11 +1152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7712375297273402354, guid: 70e1d5a393ecc4b48baa38a7d5075bd5, type: 3}
       propertyPath: maxHealth
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 7743137801165357289, guid: 70e1d5a393ecc4b48baa38a7d5075bd5, type: 3}
-      propertyPath: chaseRange
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 70e1d5a393ecc4b48baa38a7d5075bd5, type: 3}

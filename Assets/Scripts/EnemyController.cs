@@ -6,10 +6,27 @@ using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour
 {
+ 
+
+    [Header("Move Settings")]
+    [SerializeField] float attackRange = 2f;
+    [SerializeField] float chaseRange = 7f;
+    [SerializeField] float turnSpeed = 15f;
+    [SerializeField] float patrolRadius = 7f;
+    [SerializeField] float patrolWaitTime = 2f;
+    [SerializeField] float chaseSpeed = 4f;
+    [SerializeField] float searchSpeed = 3f;    
+    [Header("Attack Settings")]
+    [SerializeField] int damage = 2;
+    [SerializeField] float attackRate = 2f;
+
+    private bool isSearching = false;
+    private bool isAttacking = false;
+
+    private Animator anim;
     private NavMeshAgent agent;
     private Transform player;
-
-
+        
     enum State
     {
         Idle,
@@ -19,29 +36,22 @@ public class EnemyController : MonoBehaviour
     }
 
     [SerializeField] private State currentState = State.Idle;
-    [SerializeField] float attackRange = 2f;
-    [SerializeField] float chaseRange = 7f;
-    [SerializeField] float turnSpeed = 15f;
-    [SerializeField] float patrolRadius = 7f;
-    [SerializeField] float patrolWaitTime = 2f;
-    [SerializeField] float chaseSpeed = 4f;
-    [SerializeField] float searchSpeed = 3f;
-    [SerializeField] int damage = 2;
-
-    private bool isSearching = false;
 
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindWithTag("Player").transform;
+        anim = GetComponent<Animator>();
         
     }
 
     void Update()
     {
-        //agent.SetDestination(player.position);
-        CheckState();
-        ExecuteState();
+        if (player!=null)
+        {
+            CheckState();
+            ExecuteState();
+        }     
     }
 
     private void OnDrawGizmos()
@@ -116,6 +126,7 @@ public class EnemyController : MonoBehaviour
                 break;
             case State.Attack:
                 //print("Attack");
+                Attack();
                 break;
         }
 
@@ -147,11 +158,36 @@ public class EnemyController : MonoBehaviour
         {
             return;
         }
+        if (!isAttacking)
+        {
+            StartCoroutine(AttackRoutine());
+        }
         agent.isStopped = true;  // takibi býrakmak için
         agent.velocity = Vector3.zero; // hýzýný tamamen kesmek için
         LookTheTarget(player.position);
     }
 
+    IEnumerator AttackRoutine()
+    {
+        isAttacking = true;
+        yield return new WaitForSeconds(attackRate);
+        anim.SetTrigger("Attack");
+        yield return new WaitUntil(() => IsAttackAnimationFinished("Attack"));
+        isAttacking = false;
+    }
+
+    private bool IsAttackAnimationFinished(string animationName)
+    {
+        if (!anim.IsInTransition(0) && anim.GetCurrentAnimatorStateInfo(0).IsName(animationName) &&
+            anim.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.95f)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     void LookTheTarget(Vector3 target)
     {
         Vector3 lookPos = new Vector3(target.x, transform.position.y, target.z);

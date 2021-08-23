@@ -29,7 +29,7 @@ public class Hit : MonoBehaviour
         if (owner.CompareTag("Player"))
         {
           damage=  owner.GetComponent<AttackController>().GetDamage();
-          anim = GetComponentInParent<Transform>().GetComponentInParent<Animator>();          
+          anim = GetComponentInParent<Transform>().GetComponentInParent<Animator>();    
 
         }
 
@@ -37,6 +37,7 @@ public class Hit : MonoBehaviour
         else if (owner.CompareTag("Enemy"))
         {
           damage=  owner.GetComponent<EnemyController>().GetDamage();
+          anim = GetComponentInParent<Animator>();
         }
     }
 
