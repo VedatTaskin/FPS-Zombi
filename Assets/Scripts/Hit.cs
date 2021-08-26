@@ -39,6 +39,10 @@ public class Hit : MonoBehaviour
           damage=  owner.GetComponent<EnemyController>().GetDamage();
           anim = GetComponentInParent<Animator>();
         }
+        else
+        {
+            enabled = false;
+        }
     }
 
     private void Update()

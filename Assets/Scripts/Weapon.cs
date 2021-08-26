@@ -38,5 +38,9 @@ public class Weapon : ScriptableObject
         }
 
     }
+    public void Drop()
+    {
+        Destroy(weaponClone);
+    }
 
 }

@@ -9,7 +9,6 @@ public class EnemyController : MonoBehaviour
  
 
     [Header("Move Settings")]
-    [SerializeField] float attackRange = 2f;
     [SerializeField] float chaseRange = 7f;
     [SerializeField] float turnSpeed = 15f;
     [SerializeField] float patrolRadius = 7f;
@@ -19,6 +18,7 @@ public class EnemyController : MonoBehaviour
     [Header("Attack Settings")]
     [SerializeField] int damage = 2;
     [SerializeField] float attackRate = 2f;
+    [SerializeField] float attackRange = 1f;
 
     private bool isSearching = false;
     private bool isAttacking = false;
@@ -116,6 +116,7 @@ public class EnemyController : MonoBehaviour
                     transform.position = agentTarget;
                     agent.enabled = true;
                     Invoke("Search", patrolWaitTime);
+                    anim.SetBool("Walk", false);
                     isSearching = true;
                 }
                 //print("Search");
@@ -137,6 +138,7 @@ public class EnemyController : MonoBehaviour
         agent.isStopped = false;
         agent.speed = searchSpeed;
         isSearching = false;
+        anim.SetBool("Walk", true);
         agent.SetDestination(GetRandomPosition());
     }
 
@@ -148,6 +150,7 @@ public class EnemyController : MonoBehaviour
         }
         agent.isStopped = false;
         agent.speed = chaseSpeed;
+        anim.SetBool("Walk", true);
         agent.SetDestination(player.position);
 
     }
@@ -162,6 +165,7 @@ public class EnemyController : MonoBehaviour
         {
             StartCoroutine(AttackRoutine());
         }
+        anim.SetBool("Walk", false);        
         agent.isStopped = true;  // takibi býrakmak için
         agent.velocity = Vector3.zero; // hýzýný tamamen kesmek için
         LookTheTarget(player.position);

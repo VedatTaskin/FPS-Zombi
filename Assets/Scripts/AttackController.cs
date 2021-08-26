@@ -17,7 +17,10 @@ public class AttackController : MonoBehaviour
     {
         mainCameraTransform = GameObject.FindWithTag("CameraPoint").transform;
         anim = mainCameraTransform.GetChild(0).GetComponent<Animator>();
-        SpawnWeapon();
+        if (currentWeapon!=null)
+        {
+            SpawnWeapon();
+        }        
     }
 
     private void Update()
@@ -34,6 +37,16 @@ public class AttackController : MonoBehaviour
         }
 
         currentWeapon.SpawnNewWeapon(mainCameraTransform.GetChild(0).GetChild(0),anim);
+    }
+
+    public void EquipWeapon(Weapon weaponType)
+    {
+        if (currentWeapon!=null)
+        {
+            currentWeapon.Drop();
+        }
+        currentWeapon = weaponType;
+        SpawnWeapon();
     }
 
     void Attack()
