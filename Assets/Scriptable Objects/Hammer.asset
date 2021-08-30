@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponPrefab: {fileID: 1500039365640280, guid: 761f5b716a39f3041958ea9cd4fe98a2, type: 3}
   animatorOverride: {fileID: 22100000, guid: 7ea7f0cf1c3144a4da203873124a494b, type: 2}
-  damage: 6
+  damage: 10
   attackRate: 2
   positionOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 0, y: 0, z: 0}

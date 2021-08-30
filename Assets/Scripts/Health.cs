@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-
+    Animator animator;
     [SerializeField] private int maxHealth;
     private int currentHealth;
+
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +34,11 @@ public class Health : MonoBehaviour
     {
         if (currentHealth<=0)
         {
-            Destroy(gameObject);
+            if (animator != null)
+            {
+                animator.SetTrigger("Death");
+            }        
+            Destroy(gameObject,3);
         }
 
     }

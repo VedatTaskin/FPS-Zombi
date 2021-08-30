@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b61cdf512ca9caa4e84ac3edf21ba4c7, type: 3}
   m_Name: Bat
   m_EditorClassIdentifier: 
-  weaponPrefab: {fileID: 1932547919242592, guid: 1bb69408c48b5b044ad09b740b5b60ad, type: 3}
+  weaponPrefab: {fileID: 1534278817642606, guid: 474fdf19be0687242b8a084734655fca, type: 3}
   animatorOverride: {fileID: 22100000, guid: dd8516ad46220364c988fe102f991149, type: 2}
-  damage: 5
+  damage: 10
   attackRate: 1
   positionOffset: {x: 0, y: 0, z: 0}
   scaleOffset: {x: 0, y: 0, z: 0}

@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c8bc1f9847c440419eb3b63c6347254, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponToDrop: {fileID: 11400000, guid: d90a9f187227e2a479014a31592be95f, type: 2}
+  weaponToDrop: {fileID: 11400000, guid: 54f96f5570b00604891eaf3585be2fe6, type: 2}
   Angle: {x: 0, y: 1, z: 0}
 --- !u!65 &44679916
 BoxCollider:
@@ -1103,7 +1103,7 @@ PrefabInstance:
     - target: {fileID: 2079599288, guid: 9def150ec0e78744ca92a0db8f56e9de, type: 3}
       propertyPath: currentWeapon
       value: 
-      objectReference: {fileID: 11400000, guid: 54f96f5570b00604891eaf3585be2fe6, type: 2}
+      objectReference: {fileID: 11400000, guid: d90a9f187227e2a479014a31592be95f, type: 2}
     - target: {fileID: 4750393040104936057, guid: 9def150ec0e78744ca92a0db8f56e9de, type: 3}
       propertyPath: m_RootOrder
       value: 3

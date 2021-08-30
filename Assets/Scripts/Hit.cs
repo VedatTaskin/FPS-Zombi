@@ -12,6 +12,8 @@ public class Hit : MonoBehaviour
     private Rigidbody rb;
     private Animator anim;
 
+    public GameObject BloodPrefab;
+
 
     private void Awake()
     {
@@ -64,6 +66,7 @@ public class Hit : MonoBehaviour
         if (health != null && health.gameObject!=owner.gameObject)
         {
             health.GiveDamage(damage);
+            Instantiate(BloodPrefab, other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position),Quaternion.identity);
         }
     }
 
